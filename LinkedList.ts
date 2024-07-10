@@ -49,6 +49,19 @@ export class LinkedList<T> {
         return this;
     }
 
+    shift(): Nullable<T>{
+        const first = this._head;
+        if(first === null) return null;
+        if(this._tail === first) {
+            this._head = this._tail = null;
+        }
+        else {
+            this._head = this._head!.next;
+        }
+        this.length--;
+        return first.value;
+    }
+
     pop(): Nullable<T> {
         const last = this._tail;
         if(last === null) return null;
@@ -84,7 +97,15 @@ export class LinkedList<T> {
     }
 
     insertAt(value: T, index: number) {
-
+        if(index < 0 || index > this.length) return false;
+        if(index === 0) return !!this.prepend(value);
+        if(index === this.length) return !!this.append(value);
+        const prev = this.get(index - 1)!;
+        const node = new ListNode(value);
+        node.next = prev.next;
+        prev.next = node;
+        this.length++;
+        return true;
     }
 
     removeAt(index: number) {
