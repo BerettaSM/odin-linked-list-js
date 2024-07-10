@@ -1,1 +1,9 @@
-console.log('Hey!');
+import { LinkedList } from "./LinkedList";
+
+
+const list = new LinkedList<number>();
+
+list.append(1);
+list.append(2);
+
+console.log(list);
