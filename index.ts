@@ -21,3 +21,7 @@ console.log(list.shift())
 console.log({ head: list.head, tail: list.tail, size: list.size })
 console.log(list.toString());
 
+console.log(list.removeAt(2))
+
+console.log({ head: list.head, tail: list.tail, size: list.size })
+console.log(list.toString());

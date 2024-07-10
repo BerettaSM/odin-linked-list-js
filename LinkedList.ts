@@ -109,7 +109,14 @@ export class LinkedList<T> {
     }
 
     removeAt(index: number) {
-
+        if(index < 0 || index >= this.length) return null;
+        if(index === 0) return this.shift();
+        if(index === this.length - 1) return this.pop();
+        const prev = this.get(index - 1)!;
+        const removed = prev.next!;
+        prev.next = removed.next;
+        this.length--;
+        return removed.value;
     }
 
     toString() {
