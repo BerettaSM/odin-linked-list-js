@@ -40,7 +40,7 @@ export class LinkedList<T> {
     }
 
     prepend(value: T) {
-
+        
     }
 
     pop(): Nullable<T> {
@@ -65,6 +65,18 @@ export class LinkedList<T> {
 
     removeAt(index: number) {
 
+    }
+
+    toString() {
+        if(this.length === 0) return '[ Empty ]';
+        const q = [];
+        let node = this._head;
+        while(node !== null) {
+            q.push(`( ${node.value} )`);
+            node = node.next;
+        };
+        q.push('null');
+        return q.join(' -> ');
     }
 }
 
