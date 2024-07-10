@@ -50,7 +50,18 @@ export class LinkedList<T> {
     }
 
     pop(): Nullable<T> {
-        return null;
+        const last = this._tail;
+        if(last === null) return null;
+        if(this._head === last) {
+            this._head = this._tail = null;
+        }
+        else {
+            const prev = this.get(this.length - 2)!;
+            prev.next = null;
+            this._tail = prev;
+        }
+        this.length--;
+        return last.value;
     }
 
     contains(value: T) {
@@ -62,14 +73,7 @@ export class LinkedList<T> {
     }
 
     at(index: number) {
-        if(index < 0 || index >= this.length) return null;
-        if(index === this.length - 1) return this._tail!.value;
-        let node = this._head;
-        while(index > 0) {
-            node = node!.next;
-            index--;
-        }
-        return node!.value;
+        return this.get(index)?.value ?? null;
     }
 
     insertAt(value: T, index: number) {
@@ -90,6 +94,17 @@ export class LinkedList<T> {
         };
         q.push('null');
         return q.join(' -> ');
+    }
+
+    private get(index: number) {
+        if(index < 0 || index >= this.length) return null;
+        if(index === this.length - 1) return this._tail;
+        let node = this._head;
+        while(index > 0) {
+            node = node!.next;
+            index--;
+        }
+        return node;
     }
 }
 
