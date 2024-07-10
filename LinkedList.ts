@@ -40,7 +40,19 @@ export class LinkedList<T> {
     }
 
     prepend(value: T) {
-        
+        const node = new ListNode(value);
+
+        if(!this._head) {
+            this._head = this._tail = node;
+        }
+        else{
+            node.next = this._head;
+            this._head = node;
+        }
+
+        this.length++;
+
+        return this;
     }
 
     pop(): Nullable<T> {
