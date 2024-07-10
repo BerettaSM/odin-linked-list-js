@@ -12,3 +12,4 @@ console.log({ head: list.head, tail: list.tail })
 console.log(list.toString());
 
 console.log(list.find(3))
+console.log(list.contains(2));

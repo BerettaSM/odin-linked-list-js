@@ -65,7 +65,7 @@ export class LinkedList<T> {
     }
 
     contains(value: T) {
-
+        return this.find(value) !== null;
     }
 
     find(value: T) {
