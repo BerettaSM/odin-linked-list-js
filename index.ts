@@ -11,3 +11,4 @@ list.prepend(1);
 console.log({ head: list.head, tail: list.tail })
 console.log(list.toString());
 
+console.log(list.find(3))

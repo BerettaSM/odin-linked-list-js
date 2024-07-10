@@ -69,7 +69,14 @@ export class LinkedList<T> {
     }
 
     find(value: T) {
-
+        if(this.length === 0) return null;
+        let node = this._head;
+        let index = 0;
+        while(index < this.length && node!.value !== value) {
+            node = node?.next ?? null;
+            index++;
+        }
+        return node ? index : null;
     }
 
     at(index: number) {
